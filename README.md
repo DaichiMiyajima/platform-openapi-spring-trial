@@ -1,0 +1,1 @@
+# platform-openapi-spring-trial
