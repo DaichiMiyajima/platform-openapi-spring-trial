@@ -25,8 +25,8 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-    - name: Build with Maven
-      run: mvn -DaltDeploymentRepository=github::https://maven.pkg.github.com/DaichiMiyajima/platform-openapi-spring-trial deploy
+    - name: Maven DaltDeploymentRepository
+      run: mvn -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/DaichiMiyajima/platform-openapi-spring-trial deploy
     
     - name: Build with Maven
       run: mvn -B package --file pom.xml
