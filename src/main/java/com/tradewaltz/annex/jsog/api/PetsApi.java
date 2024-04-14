@@ -33,14 +33,10 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-04-11T00:42:50.952038810Z[Etc/UTC]", comments = "Generator version: 7.5.0-SNAPSHOT")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-04-14T08:23:18.418114879Z[Etc/UTC]", comments = "Generator version: 7.5.0-SNAPSHOT")
 @Validated
 @Tag(name = "pets", description = "the pets API")
 public interface PetsApi {
-
-    default Optional<NativeWebRequest> getRequest() {
-        return Optional.empty();
-    }
 
     /**
      * GET /pets : List all pets
@@ -68,26 +64,9 @@ public interface PetsApi {
         produces = { "application/json" }
     )
     
-    default ResponseEntity<List<Pet>> listPets(
+    ResponseEntity<List<Pet>> listPets(
         @Parameter(name = "limit", description = "How many items to return at one time (max 102)", in = ParameterIn.QUERY) @Valid @RequestParam(value = "limit", required = false) Integer limit
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "[ { \"name\" : \"name\", \"id\" : 0, \"tag\" : \"tag\" }, { \"name\" : \"name\", \"id\" : 0, \"tag\" : \"tag\" } ]";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 6, \"message\" : \"message\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
+    );
 
 
     /**
@@ -116,25 +95,8 @@ public interface PetsApi {
         produces = { "application/json" }
     )
     
-    default ResponseEntity<Pet> showPetById(
+    ResponseEntity<Pet> showPetById(
         @Parameter(name = "petId", description = "The id of the pet to retrieve", required = true, in = ParameterIn.PATH) @PathVariable("petId") String petId
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"name\" : \"name\", \"id\" : 0, \"tag\" : \"tag\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 6, \"message\" : \"message\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
+    );
 
 }
